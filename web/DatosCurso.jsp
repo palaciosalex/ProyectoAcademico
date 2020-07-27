@@ -161,12 +161,25 @@
                          if (s_accion !=null) {
                     
                     if (s_accion.equals("E")) {
+                        
+                        consulta =    " select * from matricula "
+                                        + " where  "
+                                        + " idcurso = " + s_idcurso +"; ";
+                        pst = cn.prepareStatement(consulta);
+                        rs = pst.executeQuery();
+                        
+                        if(rs.last()){
+                            out.print("<p align=center>No se puede eliminar el estudiante</p>");
+                        }else{
                             consulta =    " delete from curso "
                                         + " where  "
                                         + " idcurso = " + s_idcurso +"; ";
                            
                             pst = cn.prepareStatement(consulta);
                             pst.executeUpdate();
+                        }
+                        
+                            
                     
                     }else if(s_accion.equals("C")){
                             s_nombre = request.getParameter("f_nombre");

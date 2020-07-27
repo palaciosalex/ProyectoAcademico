@@ -111,7 +111,20 @@
                             </tr>
                             <tr>
                                 <td>Estado: </td>
-                                <td><input type="text" name="f_estado" value="<%out.print(rs.getString(7));%>" maxlength="1" size="2" /></td>
+                                <td>
+                                    <select name="f_estado">
+                                        <%
+                                            if(rs.getString(7).equals("A")){
+                                                out.print("<option value='A' selected>Activado</option>");
+                                                out.print("<option value='D' >Desactivado</option>");
+                                            }else{
+                                                out.print("<option value='A' >Activado</option>");
+                                                out.print("<option value='D' selected>Desactivado</option>");
+                                            }
+                                        %>
+
+                                    </select>
+                                </td>
                             </tr>
                             <tr align="center">
                                 <td colspan="2">
@@ -184,7 +197,12 @@
                     </tr>
                     <tr>
                         <td>Estado: </td>
-                        <td><input type="text" name="f_estado" value="" maxlength="1" size="2" /></td>
+                        <td>
+                            <select name="f_estado">
+                                <option value="A">Activado</option>
+                                <option value="D">Desactivado</option>
+                            </select>
+                        </td>
                     </tr>
                     <tr align="center">
                         <td colspan="2">
